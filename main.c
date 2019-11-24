@@ -1,13 +1,12 @@
 #include<stdio.h>
 #include"myBank.h"
 
+
 int main() {
 
 char c = ' ';
 
-
 while(c != 'E'){
-	int d;
 	printf("\nTransation Type? ");
 	scanf(" %c" , &c);
 	while(getchar() !=  '\n'){

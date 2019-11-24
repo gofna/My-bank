@@ -4,17 +4,6 @@
 double bank [50] [2] = {0} ;
 
 
-void openAccount(int last) {
-		double x;
-		int n;
-		bank[last][0] = 1;
-		printf("Initial deposite? ");
-		n = scanf( "%lf", &x);
-		if (n != 0);
-		bank[last][1] = x;
-		printf("your number account is :  %d \n" ,last+901);
-		last++;
-}
 void openAccount2() {
 	double x;
 	int n;
@@ -31,6 +20,8 @@ void openAccount2() {
 	else{
 		printf("Initial deposite? ");
 		n = scanf( "%lf", &x);
+		x = (int)100*x;
+		x = (double) x/100;
 		if ( n != 0 ){
 			bank[indexFree][0] = 1;
 			bank[indexFree][1] = x;
@@ -61,6 +52,8 @@ void deposite( int n){
 		double m;
 		printf("Amount?");
 		scanf("%lf" , &m);
+		m = (int)100*m;
+		m = (double) m/100;
 		bank[n-901][1] = bank[n-901][1]+m;
 		printf("the new balance is : %0.2lf", bank[n-901][1]);
 	}
@@ -74,6 +67,8 @@ void withdrawal(int n){
 		double m;
 		printf("Amount?");
 		scanf("%lf", &m);
+		m = (int)100*m;
+		m = (double) m/100;
 		if(m > bank[n-901][1]){
 			printf("The operation is invalide");
 		}
