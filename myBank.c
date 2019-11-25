@@ -1,15 +1,18 @@
 #include<stdio.h>
 #include "myBank.h"
-#include<math.h>
 
-double bank [50] [2] = {0} ;
+#define COL 50
+#define ROW 2
+#define DISTANCE 901
+
+double bank [COL] [ROW] = {0} ;
 
 
 void openAccount2() {
 	double x; // the deposite
 	int n;
 	int indexFree = -1;
-		for(int i = 0; i < 50; i++){
+		for(int i = 0; i < COL; i++){
 			if(bank[i][0] == 0){
 			indexFree = i; // where to put the new accout
 			i = 49;
@@ -27,7 +30,7 @@ void openAccount2() {
 		if ( n != 0 ){
 			bank[indexFree][0] = 1;
 			bank[indexFree][1] = x;
-			printf("your number account is :  %d \n" ,indexFree+901);
+			printf("your number account is :  %d \n" ,indexFree+DISTANCE);
 		}
 		else{
 			printf("invalid number");
@@ -37,17 +40,17 @@ void openAccount2() {
 }
 
 void balance(int n){
-	if (bank[n-901][0] == 0){
+	if (bank[n-DISTANCE][0] == 0){
 		printf("The account is close");
 	}
 	else{
-		double b = bank[n-901][1];
+		double b = bank[n-DISTANCE][1];
 		printf("the balance in this account is : %0.2lf \n", b);
 	}
 }
 
 void deposite( int n){
-	if (bank[n-901][0] == 0){
+	if (bank[n-DISTANCE][0] == 0){
 		printf("The account is close");
 	}
 	else{
@@ -57,13 +60,13 @@ void deposite( int n){
 		m = 100*m;
 		m = (int)m;
 		m = (double) m/100;
-		bank[n-901][1] = bank[n-901][1]+m;
-		printf("the new balance is : %0.2lf", bank[n-901][1]);
+		bank[n-DISTANCE][1] = bank[n-DISTANCE][1]+m;
+		printf("the new balance is : %0.2lf", bank[n-DISTANCE][1]);
 	}
 }
 
 void withdrawal(int n){
-	if (bank[n-901][0] == 0){
+	if (bank[n-DISTANCE][0] == 0){
 		printf("The account is close");
 	}
 	else {
@@ -73,29 +76,29 @@ void withdrawal(int n){
 		m = 100*m;
 		m = (int)m;
 		m = (double) m/100;
-		if(m > bank[n-901][1]){
+		if(m > bank[n-DISTANCE][1]){
 			printf("The operation is invalide");
 		}
 		else{
-			bank[n-901][1] = bank[n-901][1] - m;
-			printf("the new balance is : %0.2lf", bank[n-901][1]);
+			bank[n-DISTANCE][1] = bank[n-DISTANCE][1] - m;
+			printf("the new balance is : %0.2lf", bank[n-DISTANCE][1]);
 		}
 	}
 }
 
 void closeAccount(int n){
-	if (bank[n-901][0] == 0){
+	if (bank[n-DISTANCE][0] == 0){
 		printf("The account is already closed");
 	}
 	else{
-		bank[n-901][1] = 0;
-		bank[n-901][0] = 0;
+		bank[n-DISTANCE][1] = 0;
+		bank[n-DISTANCE][0] = 0;
 	}
 }
 
 void interest(double n){
 	n = n/100;
-	for(int i=0 ; i<50 ; i++){
+	for(int i=0 ; i<COL ; i++){
 		if(bank[i][0] == 1){
 			bank[i][1] = bank[i][1]+bank[i][1]*n;
 			bank[i][1] = 100*bank[i][1];
@@ -106,16 +109,16 @@ void interest(double n){
 }
 
 void printBank(){
-	for(int i=0 ; i < 50 ; i++){
+	for(int i=0 ; i < COL ; i++){
 		if(bank[i][0] == 1){
-			printf("The amount in the acount %d is : " , i+901);
+			printf("The amount in the acount %d is : " , i+DISTANCE);
 			printf("%0.2lf \n", bank[i][1]);
 			}
 	}
 }
 
 void Exit(){
-	for(int i=0 ; i < 50 ; i++){
+	for(int i=0 ; i < COL ; i++){
 		bank[i][0] = 0;
 		bank[i][1] = 0;
 	}
