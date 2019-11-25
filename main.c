@@ -9,8 +9,7 @@ char c = ' ';
 while(c != 'E'){
 	printf("\nTransation Type? ");
 	scanf(" %c" , &c);
-	while(getchar() !=  '\n'){
-	}
+
 	switch(c){
 		int x;
 		int n;

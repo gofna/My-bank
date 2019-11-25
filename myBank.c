@@ -1,16 +1,17 @@
 #include<stdio.h>
 #include "myBank.h"
+#include<math.h>
 
 double bank [50] [2] = {0} ;
 
 
 void openAccount2() {
-	double x;
+	double x; // the deposite
 	int n;
 	int indexFree = -1;
 		for(int i = 0; i < 50; i++){
 			if(bank[i][0] == 0){
-			indexFree = i;
+			indexFree = i; // where to put the new accout
 			i = 49;
 			}
 		}
@@ -20,7 +21,8 @@ void openAccount2() {
 	else{
 		printf("Initial deposite? ");
 		n = scanf( "%lf", &x);
-		x = (int)100*x;
+		x = 100*x; // to store the number with 2 digit after the decimal point
+		x = (int)x;
 		x = (double) x/100;
 		if ( n != 0 ){
 			bank[indexFree][0] = 1;
@@ -52,7 +54,8 @@ void deposite( int n){
 		double m;
 		printf("Amount?");
 		scanf("%lf" , &m);
-		m = (int)100*m;
+		m = 100*m;
+		m = (int)m;
 		m = (double) m/100;
 		bank[n-901][1] = bank[n-901][1]+m;
 		printf("the new balance is : %0.2lf", bank[n-901][1]);
@@ -67,7 +70,8 @@ void withdrawal(int n){
 		double m;
 		printf("Amount?");
 		scanf("%lf", &m);
-		m = (int)100*m;
+		m = 100*m;
+		m = (int)m;
 		m = (double) m/100;
 		if(m > bank[n-901][1]){
 			printf("The operation is invalide");
@@ -94,6 +98,9 @@ void interest(double n){
 	for(int i=0 ; i<50 ; i++){
 		if(bank[i][0] == 1){
 			bank[i][1] = bank[i][1]+bank[i][1]*n;
+			bank[i][1] = 100*bank[i][1];
+			bank[i][1] = (int)bank[i][1];
+			bank[i][1] = (double)bank[i][1]/100;
 		}
 	}
 }
