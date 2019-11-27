@@ -82,6 +82,7 @@ while(c != 'E'){
 		printf("error! the operator is not correct");
 	}	
 }
+return 0;
 }
 
 
