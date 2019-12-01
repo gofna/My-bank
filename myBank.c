@@ -1,19 +1,19 @@
 #include<stdio.h>
 #include "myBank.h"
-#define COL 50
-#define ROW 2
+#define ACCOUNTS 50
+#define STATUS 2
 #define FIXPOS 901
 #define OPEN 1
 #define CLOSE 0
 
-double bank [COL] [ROW] = {0} ;
+double bank [ACCOUNTS] [STATUS] = {0} ;
 
 
 void openAccount2() {
 	double x; // the deposite
-	int n;
+	int n; //use to check if we get valid number
 	int indexFree = -1;
-		for(int i = 0; i < COL; i++){
+		for(int i = 0; i < ACCOUNTS; i++){
 			if(bank[i][0] == CLOSE){
 			indexFree = i; // where to put the new accout
 			i = 49;
@@ -99,7 +99,7 @@ void closeAccount(int n){
 
 void interest(double n){
 	n = n/100;
-	for(int i=0 ; i<COL ; i++){
+	for(int i=0 ; i<ACCOUNTS ; i++){
 		if(bank[i][0] == 1){
 			bank[i][1] = bank[i][1]+bank[i][1]*n;
 			bank[i][1] = 100*bank[i][1];
@@ -110,7 +110,7 @@ void interest(double n){
 }
 
 void printBank(){
-	for(int i=0 ; i < COL ; i++){
+	for(int i=0 ; i < ACCOUNTS ; i++){
 		if(bank[i][0] == 1){
 			printf("The amount in the acount %d is : " , i+FIXPOS);
 			printf("%0.2lf \n", bank[i][1]);
@@ -119,7 +119,7 @@ void printBank(){
 }
 
 void Exit(){
-	for(int i=0 ; i < COL ; i++){
+	for(int i=0 ; i < ACCOUNTS ; i++){
 		bank[i][0] = CLOSE;
 		bank[i][1] = 0;
 	}

@@ -4,16 +4,16 @@
 
 int main() {
 
-char c = ' ';
+char c = ' '; // the operetion we need to get from the user
 
 while(c != 'E'){
 	printf("\nTransation Type? ");
 	scanf(" %c" , &c);
 
 	switch(c){
-		int x;
-		int n;
-		double y;
+		int x ; // use to check if we get valid number
+		int n ; // use to get the number accounts
+		double i ; // use for get interest 
 	case 'O' :
 		openAccount2();
 		break;
@@ -66,8 +66,8 @@ while(c != 'E'){
 	
 	case 'I' :
 		printf("Interest rate? ");
-		scanf("%lf" , &y);
-		interest(y);
+		scanf("%lf" , &i);
+		interest(i);
 		break;
 		
 	case 'P' :
